@@ -3,8 +3,8 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginController extends Controller
@@ -12,15 +12,15 @@ class LoginController extends Controller
     /**
      * @Route("/login" , name="login")
      */
-    public function loginAction(Request $request , AuthenticationUtils $authenticationutils )
+    public function loginAction(Request $request, AuthenticationUtils $authenticationutils)
     {
-        
-        $errors = $authenticationutils->getLastAuthenticationError();
-         $lastusername = $authenticationutils->getLastUsername();
+
+        $errors       = $authenticationutils->getLastAuthenticationError();
+        $lastusername = $authenticationutils->getLastUsername();
         return $this->render('@App/login/login.html.twig', array(
-            'errors'=>$errors,
-            'lastusername'=>$lastusername,
-            
+            'errors'       => $errors,
+            'lastusername' => $lastusername,
+
             // ...
         ));
     }
@@ -33,6 +33,14 @@ class LoginController extends Controller
         return $this->render('@App/blog/index.html.twig', array(
             // ...
         ));
+    }
+
+    /**
+     * @Route("/logout" , name="logout")
+     */
+    public function logoutAction()
+    {
+
     }
 
 }
