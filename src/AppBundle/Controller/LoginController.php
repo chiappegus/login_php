@@ -35,11 +35,39 @@ class LoginController extends Controller
         ));
     }
 
+    
+
+     /**
+     * @Route("/santi" , name="santi")
+     */
+    public function santiAction(Request $request, AuthenticationUtils $authenticationutils)
+    {
+         $errors       = $authenticationutils->getLastAuthenticationError();
+        $lastusername = $authenticationutils->getLastUsername();
+        return $this->render('@App/login/out.html.twig', array(
+            'errors'       => $errors,
+            'lastusername' => $lastusername,
+
+            // ...
+        ));
+
+    }
+
+    
+
     /**
      * @Route("/logout" , name="logout")
      */
-    public function logoutAction()
+    public function logoutAction(Request $request, AuthenticationUtils $authenticationutils)
     {
+         $errors       = $authenticationutils->getLastAuthenticationError();
+        $lastusername = $authenticationutils->getLastUsername();
+        return $this->render('@App/login/out.html.twig', array(
+            'errors'       => $errors,
+            'lastusername' => $lastusername,
+
+            // ...
+        ));
 
     }
 

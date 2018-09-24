@@ -25,9 +25,11 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+                always_use_default_target_path: true
+                default_target_path:  /login
             logout:
                 path: /logout
-                target: /login 
+                target: /santi    
          
             # activate different ways to authenticate
 
@@ -37,6 +39,6 @@ security:
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
     access_control:
-        
-        - {path: ^/login , roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - {path: ^/ , roles: IS_AUTHENTICATED_FULLY  }
+        - {path: ^/^ , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - {path: ^/login , roles: [IS_AUTHENTICATED_ANONYMOUSLY ,IS_AUTHENTICATED_FULLY] }
+        - {path: ^/Admin , roles: IS_AUTHENTICATED_FULLY  }
